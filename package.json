@@ -1,0 +1,12 @@
+{
+  "name": "maxeev-sass",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch src/scss/styles.scss:src/css/main.css --style=compressed"
+  },
+  "keywords": [],
+  "author": "Miryoqib",
+  "license": "MIT",
+  "description": "Maheev website"
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Махеевь</title>
+    <link rel="shortcut icon" href="/public/icons/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/src/css/main.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__inner container">
+            <a href="/index.html" class="header__logo">
+                <svg class="header__logo-icon" width="173" height="56">
+                    <use href="/public/icons.svg#icon-logo" />
+                </svg>
+            </a>
+            <nav class="header__nav">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item">
+                        <a href="#" class="header__nav-link link">Правила конкурса</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#" class="header__nav-link link">Призы</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#" class="header__nav-link link">Наша продукция</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#" class="header__nav-link link">Рецепты</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hamburger-menu__button-open" id="hamburgerMenuOpenButton">
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hamburger-menu" id="hamburgerMenu">
+        <button class="hamburger-menu__button-close" id="hamburgerMenuCloseButton">
+            <span></span>
+            <span></span>
+        </button>
+    </section>
+
+    <section class="hero">
+        <div class="hero__inner container">
+            <div class="hero__main">
+                <div class="hero__body">
+                    <h1 class="hero__title">Покажи вкус лета с <span>“Махеевъ”</span></h1>
+                    <p class="hero__description">
+                        Придумывайте легкие и быстрые рецепты с продукцией “Махеевъ”, делитесь ими
+                        и получайте возможность выиграть ценные призы!
+                    </p>
+
+                    <div class="hero__actions">
+                        <button class="button" type="button">
+                            <a href="#" class="hero__link">
+                                Участвовать в конкурсе
+                            </a>
+                        </button>
+
+                        <button class="button button--outline" type="button">
+                            <a href="#" class="hero__link">
+                                Узнать подробнее
+                            </a>
+                        </button>
+                    </div>
+
+                    <div class="countdown">
+                        <h3 class="countdown__title">ДО ОКОНЧАНИЯ КОНКУРСА:</h3>
+                        <div class="countdown__time">
+                            <article class="countdown__count">
+                                <div class="countdown__display">
+                                    <span id="countdownDaysFirst">0</span>
+                                    <span id="countdownDaysSecond">0</span>
+                                </div>
+                                <p>Дней</p>
+                            </article>
+                            <article class="countdown__count">
+                                <div class="countdown__display">
+                                    <span id="countdownHoursFirst">0</span>
+                                    <span id="countdownHoursSecond">0</span>
+                                </div>
+                                <p>Часов</p>
+                            </article>
+                            <article class="countdown__count">
+                                <div class="countdown__display">
+                                    <span id="countdownMinutesFirst">0</span>
+                                    <span id="countdownMinutesSecond">0</span>
+                                </div>
+                                <p>Минут</p>
+                            </article>
+                            <article class="countdown__count">
+                                <div class="countdown__display">
+                                    <span id="countdownSecondsFirst">0</span>
+                                    <span id="countdownSecondsSecond">0</span>
+                                </div>
+                                <p>Секунды</p>
+                            </article>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="hero__image">
+                    <img src="/public/images/hero-background.png" class="hero__image-image" />
+                    <!-- Томат который находить перед картинкой -->
+                    <img src="/public/images/deco-tomato.png" class="hero__image-decoration"/>
+                    <!-- Томат для заднего фона -->
+                    <img src="/public/images/deco-tomato.png" class="hero__image-decoration"/>
+                    <!-- Листочки для заднего фона -->
+                    <img src="/public/images/deco-leaf.png" class="hero__image-decoration"/>
+                    <img src="/public/images/deco-leaf.png" class="hero__image-decoration"/>
+                </div>
+            </div>
+            <div class="hero__banner">
+                <p class="hero__banner-description">
+                    <span>Лето - это волшебное время</span>, 
+                    полное ярких и сочных красок. Многие ждут его, чтобы насладиться
+                    солнечными днями и устроить небольшое приключение с семьей или друзьями. 
+                    А еще<span>плюс лета - большое количество</span> 
+                    сочных и спелых сезонных <span>продуктов, из которых можно приготовить вкуснейшие блюда.</span>
+                </p>
+                <p class="hero__banner-description">
+                    Где бы вы ни проводили это время, <span>готовьте блюда<br> с использованием продукции “Махеевъ”<br> и присылайте
+                    свои яркие рецепты на конкурс.</span><br> Покажите всем, какие цвета у вашего лета!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="/src/js/index.js"></script>
+</body>
+
+</html>

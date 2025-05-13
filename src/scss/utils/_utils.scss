@@ -1,0 +1,34 @@
+@use "../base/mixins" as m;
+
+.container {
+    width: 100%;
+    max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+    padding-inline: var(--container-padding-x);
+    margin-inline: auto;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.link {
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: currentColor;
+        transform: scaleX(0);
+        transform-origin: center;
+
+        transition: transform 0.5s ease-in-out;
+    }
+
+    @include m.hover {
+        &::after {
+            transform: scaleX(1);
+        }
+    }
+}

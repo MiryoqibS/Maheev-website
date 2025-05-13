@@ -1,0 +1,42 @@
+$laptopM: 1280px;
+$laptop: 1024px;
+$tablet: 768px;
+$mobile: 480px;
+
+// Media Queries
+@mixin media($breakpoint) {
+    @if $breakpoint ==laptopM {
+        @media (max-width: $laptopM) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==laptop {
+        @media (max-width: $laptop) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==tablet {
+        @media (max-width: $tablet) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==mobile {
+        @media (max-width: $mobile) {
+            @content;
+        }
+    }
+
+    @else {
+        @warn "Unknown breakpoint: #{$breakpoint}";
+    }
+}
+
+// Custom Media Queries
+@mixin custom-media($width) {
+    @media (max-width: $width) {
+        @content;
+    }
+}

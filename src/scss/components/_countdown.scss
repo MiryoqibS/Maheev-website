@@ -1,0 +1,91 @@
+@use "../base/mixins" as m;
+
+.countdown {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    row-gap: 18px;
+    padding: 30px 40px;
+    background-color: var(--color-primary);
+    border-radius: 12px;
+    color: var(--color-light);
+    position: relative;
+    width: 100%;
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -25px;
+        left: 5px;
+        display: block;
+        width: 33px;
+        height: 54px;
+        background: {
+            image: url("/public/images/deco-leaf.png");
+            position: center center;
+            size: cover;
+        };
+    }
+
+    &__title {
+        @include m.fluid-text(32, 26);
+
+        font-weight: 700;
+        font-family: var(--font-family-heading);
+    }
+
+    &__time {
+        display: flex;
+        align-items: start;
+        column-gap: 38px;
+    }
+
+    &__display {
+        display: flex;
+        align-items: start;
+        column-gap: 6px;
+    }
+
+    &__count {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 12px;
+        position: relative;
+
+        &:not(:last-child)::after,
+        &:not(:last-child)::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: calc(100% + 19px);
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--color-light);
+            opacity: 0.9;
+        }
+
+        &:not(:last-child)::before {
+            top: 30%;
+        }
+
+        span {
+            display: block;
+            padding: 8px 12px 18px;
+            height: 70px;
+            border-radius: 14px;
+            color: var(--color-dark);
+            font-size: 60px;
+            font-family: var(--font-family-heading);
+            background-color: var(--color-light);
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 700;
+        }
+    }
+}

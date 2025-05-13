@@ -1,0 +1,55 @@
+@use "../utils/media" as media;
+
+.header {
+    padding-top: 35px;
+
+    &__logo {
+        position: relative;
+
+        @include media.media(tablet) {
+            width: 100px;
+        }
+
+        &-icon {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: 20px;
+    }
+
+    &__nav {
+        display: flex;
+        align-items: center;
+
+        @include media.custom-media(650px) {
+            display: none;
+        }
+
+        &-list {
+            display: flex;
+            align-items: center;
+            column-gap: 58px;
+
+            @include media.custom-media(950px) {
+                column-gap: 30px;
+            }
+
+            @include media.media(tablet) {
+                column-gap: 18px;
+            }
+    
+        }
+
+        &-link {
+            color: var(--color-dark);
+        }
+    }
+
+
+}

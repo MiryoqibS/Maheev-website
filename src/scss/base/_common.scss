@@ -1,0 +1,28 @@
+@use "./mixins" as m;
+
+body, html {
+    @include m.fluid-text(16, 18);
+    
+    font-family: var(--font-family-base);
+    color: var(--color-dark);
+}
+
+a,
+button,
+input,
+svg,
+img {
+    transition-duration: 0.4s;
+}
+
+a {
+    color: var(--color-white);
+}
+
+section {
+    margin-top: 80px;
+}
+
+h1 {
+    @include m.fluid-text(72, 34);
+}
