@@ -1,16 +1,28 @@
 @use "../base/mixins" as m;
+@use "../utils/media" as media;
 
 .countdown {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     row-gap: 18px;
     padding: 30px 40px;
     background-color: var(--color-primary);
     border-radius: 12px;
     color: var(--color-light);
     position: relative;
-    width: 100%;
+
+    @include media.custom-media(1180px) {
+        padding-inline: 20px;
+    }
+
+    @include media.custom-media(920px) {
+        width: 100%;
+    }
+
+    @include media.custom-media(400px) {
+        padding-inline: 10px;
+    }
 
     &::after {
         content: "";
@@ -20,15 +32,16 @@
         display: block;
         width: 33px;
         height: 54px;
+
         background: {
             image: url("/public/images/deco-leaf.png");
             position: center center;
             size: cover;
-        };
+        }
     }
 
     &__title {
-        @include m.fluid-text(32, 26);
+        @include m.fluid-text(17, 32);
 
         font-weight: 700;
         font-family: var(--font-family-heading);
@@ -38,6 +51,18 @@
         display: flex;
         align-items: start;
         column-gap: 38px;
+
+        @include media.custom-media(1180px) {
+            column-gap: 16px;
+        }
+
+        @include media.custom-media(920px) {
+            column-gap: 40px;
+        }
+
+        @include media.custom-media(450px) {
+            column-gap: 16px;
+        }
     }
 
     &__display {
@@ -66,10 +91,59 @@
             border-radius: 50%;
             background-color: var(--color-light);
             opacity: 0.9;
+
+            @include media.custom-media(1180px) {
+                left: calc(100% + 8px);
+                width: 8px;
+                height: 8px;
+            }
+
+            @include media.custom-media(920px) {
+                left: calc(100% + 20px);
+            }
+
+            @include media.custom-media(450px) {
+                left: calc(100% + 8px);
+                width: 6px;
+                height: 6px;
+            }
         }
 
         &:not(:last-child)::before {
             top: 30%;
+        }
+
+        @include media.media(laptop) {
+            &.hidden {
+                display: none;
+            }
+
+            &.hidden-decoration::after,
+            &.hidden-decoration::before {
+                display: none;
+            }
+        }
+
+        @include media.custom-media(590px) {
+            &.hidden {
+                display: flex;
+            }
+
+            &.hidden-decoration::after,
+            &.hidden-decoration::before {
+                display: block;
+            }
+        }
+
+        @include media.media(laptop) {
+            &.hidden {
+                display: none;
+            }
+
+            &.hidden-decoration::after,
+            &.hidden-decoration::before {
+                display: none;
+            }
         }
 
         span {
@@ -81,6 +155,12 @@
             font-size: 60px;
             font-family: var(--font-family-heading);
             background-color: var(--color-light);
+
+            @include media.custom-media(400px) {
+                font-size: 30px;
+                height: 45px;
+                border-radius: 6px;
+            }
         }
 
         p {

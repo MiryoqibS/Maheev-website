@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @mixin hover {
     @media all and (hover: hover) {
         &:hover {
@@ -27,5 +29,10 @@
 }
 
 @mixin fluid-text($min, $max) {
-    font-size: clamp(#{$min}px, #{$max / 1440 * 100}vw, #{$max}px);
+    font-size: 
+        clamp(
+            #{$min}px,
+            #{math.div($max, 1440) * 100}vw,
+            #{$max}px
+        );
 }
