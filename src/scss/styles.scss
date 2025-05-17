@@ -10,6 +10,7 @@
 @use "./utils/animations";
 @use "./utils/scrollbar";
 @use "./utils/media";
+@use "./utils/grid";
 
 // Components
 @use "./components/button";
@@ -22,3 +23,4 @@
 
 // Blocks
 @use "./blocks/hero";
+@use "./blocks/competition";
