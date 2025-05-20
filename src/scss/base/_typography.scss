@@ -14,6 +14,7 @@
     font-display: swap;
 }
 
+
 @font-face {
     font-family: "Bebas Neue";
     src: url("/public/fonts/Bebas_Neue/static/BebasNeue-Regular.woff2") format("woff2");
@@ -24,11 +25,12 @@
 
 @font-face {
     font-family: "Bebas Neue";
-    src: url("/public/fonts/Bebas_Neue/static/BebasNeue-Regular.woff2") format("woff2");
-    font-weight: 500;
+    src: url("/public/fonts/Bebas_Neue/static/BebasNeueCyrillic.woff2") format("woff2");
+    font-weight: 700;
     font-style: normal;
-    font-display: swap;
+    unicode-range: U+0400-04FF;
 }
+
 
 @font-face {
     font-family: "Mon Amour One";

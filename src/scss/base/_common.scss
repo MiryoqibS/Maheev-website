@@ -1,8 +1,9 @@
 @use "./mixins" as m;
 
-body, html {
+body,
+html {
     @include m.fluid-text(16, 18);
-    
+
     font-family: var(--font-family-base);
     color: var(--color-dark);
 }
@@ -24,5 +25,20 @@ section {
 }
 
 h1 {
-    @include m.fluid-text(72, 34);
+    @include m.fluid-text(32, 72);
+}
+
+h2 {
+    @include m.fluid-text(24, 64);
+
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+h3 {
+    @include m.fluid-text(20, 28);
+
+    font-weight: 700;
+    text-transform: uppercase;
 }

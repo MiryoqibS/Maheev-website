@@ -16,6 +16,7 @@
 @use "./components/button";
 @use "./components/hamburger-menu";
 @use "./components/countdown";
+@use "./components/count-circle";
 
 // Layouts
 @use "./layouts/header";
@@ -24,3 +25,4 @@
 // Blocks
 @use "./blocks/hero";
 @use "./blocks/competition";
+@use "./blocks/prizes";

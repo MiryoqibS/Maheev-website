@@ -1,0 +1,159 @@
+@use "../base/mixins" as m;
+
+.prizes {
+    background-color: var(--color-primary);
+    padding: 80px 0 50px;
+    color: var(--color-light);
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: -65px;
+        left: 10%;
+        rotate: 20deg;
+
+        background: {
+            image: url("/public/images/deco-ketchup-mustard.png");
+            size: cover;
+            repeat: no-repeat;
+        }
+
+        width: 78px;
+        height: 144px;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: -65px;
+        right: 10%;
+        rotate: -30deg;
+
+        background: {
+            image: url("/public/images/deco-ketchup-khebab.png");
+            size: cover;
+            repeat: no-repeat;
+        }
+
+        width: 78px;
+        height: 144px;
+    }
+
+    // Container
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    // Header
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 25px;
+        text-align: center;
+    }
+
+    &__description {
+        @include m.fluid-text(18, 20);
+
+        width: 100%;
+        max-width: 700px;
+    }
+
+    // Cards container
+    &__body {
+        column-gap: 34px;
+        margin-top: 20px;
+    }
+
+    // Card
+    &-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: end;
+        row-gap: 25px;
+        padding: 25px;
+        position: relative;
+        transition: transform .4s ease;
+
+        @include m.hover {
+            transform: translateY(-30px);
+        }
+
+        &__image {
+            width: fit-content;
+            z-index: 2;
+        }
+
+        &__count {
+            z-index: 2;
+        }
+
+        &__title {
+            color: var(--color-primary);
+            font-family: var(--font-family-heading);
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        &__background {
+            position: absolute;
+            bottom: 0;
+            z-index: 1;
+            left: 0;
+            border-radius: 15px;
+            box-shadow: 0 14px 14px rgba(0, 0, 0, 0.17);
+            width: 100%;
+            background-color: var(--color-light);
+        }
+
+        &:nth-child(1) {
+            .prizes-card__background {
+                height: 300px;
+            }
+        }
+
+        &:nth-child(2) {
+            .prizes-card__background {
+                height: 350px;
+            }
+        }
+
+        &:nth-child(3) {
+            .prizes-card__background {
+                height: 250px;
+            }
+        }
+    }
+
+    // Box
+    &-box {
+        display: flex;
+        align-items: center;
+        column-gap: 24px;
+        margin-top: 40px;
+
+        &__description {
+            @include m.fluid-text(24, 38);
+
+            font-family: var(--font-family-heading);
+            max-width: 320px;
+            line-height: 1.4;
+        }
+    }
+
+    // Info text
+    &__info {
+        @include m.fluid-text(24, 28);
+
+        margin-top: 20px;
+        font-family: var(--font-family-heading);
+        line-height: 1.2;
+        letter-spacing: 1px;
+    }
+}
