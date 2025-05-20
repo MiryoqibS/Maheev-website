@@ -1,4 +1,5 @@
 @use "../base/mixins" as m;
+@use "../utils/media" as media;
 
 .prizes {
     background-color: var(--color-primary);
@@ -40,6 +41,13 @@
         height: 144px;
     }
 
+    @include media.media(tablet) {
+        &::after,
+        &::before {
+            display: none;
+        }
+    }
+
     // Container
     &__inner {
         display: flex;
@@ -66,7 +74,18 @@
     // Cards container
     &__body {
         column-gap: 34px;
+        row-gap: 30px;
         margin-top: 20px;
+
+        @include media.custom-media(920px) {
+            --gridColumns: 2;
+        }
+
+        @include media.media(tablet) {
+            width: 100%;
+
+            --gridColumns: 1;
+        }
     }
 
     // Card
@@ -77,12 +96,34 @@
         text-align: center;
         justify-content: end;
         row-gap: 25px;
-        padding: 25px;
+        padding: 25px 20px;
         position: relative;
         transition: transform .4s ease;
 
         @include m.hover {
             transform: translateY(-30px);
+        }
+
+        @include media.custom-media(920px) {
+            &:nth-child(2) {
+                order: -1;
+            }
+
+            &:nth-child(3) {
+                grid-column: span 2;
+                margin-inline: auto;
+            }
+        }
+
+        @include media.media(tablet) {
+            width: 100%;
+            justify-self: center;
+            max-width: 400px;
+
+            &:nth-child(3) {
+                grid-column: span 1;
+                margin: 0;
+            }
         }
 
         &__image {
@@ -145,6 +186,12 @@
             max-width: 320px;
             line-height: 1.4;
         }
+
+        @include media.custom-media(550px) {
+            flex-direction: column;
+            row-gap: 20px;
+            text-align: center;
+        }
     }
 
     // Info text
@@ -155,5 +202,10 @@
         font-family: var(--font-family-heading);
         line-height: 1.2;
         letter-spacing: 1px;
+        text-align: center;
+
+        @include media.custom-media(550px) {
+            margin-top: 40px;
+        }
     }
 }

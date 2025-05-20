@@ -29,7 +29,7 @@ h1 {
 }
 
 h2 {
-    @include m.fluid-text(24, 64);
+    @include m.fluid-text(36, 64);
 
     font-family: var(--font-family-heading);
     font-weight: 700;
@@ -37,7 +37,7 @@ h2 {
 }
 
 h3 {
-    @include m.fluid-text(20, 28);
+    @include m.fluid-text(24, 28);
 
     font-weight: 700;
     text-transform: uppercase;
