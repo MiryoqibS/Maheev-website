@@ -65,3 +65,160 @@ updateCountdown();
 
 // Ставим интервал на каждую секунду для функции
 const countdown = setInterval(updateCountdown, 1000);
+
+// Слайдер
+const initSlider = (slider, sliderWrapper, sliderSlides, perView) => {
+    slider = document.getElementById(slider);
+    sliderWrapper = document.getElementById(sliderWrapper);
+    sliderSlides = document.querySelectorAll(`#${sliderSlides}`);
+    // Дополнительные элементы слайдера 
+    const sliderSwipeLeft = slider.querySelector("#swiperSwipeLeft");
+    const sliderSwipeRight = slider.querySelector("#swiperSwipeRight");
+    const sliderPagination = slider.querySelector("#swiperPagination");
+
+    const sliderSwipeWidth = 50;
+    const gap = 25;
+    const slideWidth = 240;
+    let sliderMaxWidth = 0;
+    let sliderWrapperLeft = 0;
+
+    // Задаём стили для доп. элементов слайдера
+    [sliderSwipeLeft, sliderSwipeRight].forEach((button) => {
+        button.style.display = "flex";
+        button.style.justifyContent = "center";
+        button.style.alignItems = "center";
+        button.style.position = "absolute";
+        button.style.top = "50%";
+        button.style.width = `${sliderSwipeWidth}px`;
+        button.style.height = `${sliderSwipeWidth}px`;
+        button.style.borderRadius = "50%";
+        button.style.backgroundColor = "#E25E5E";
+    });
+
+    sliderSwipeLeft.style.left = "0";
+    sliderSwipeRight.style.right = "0";
+
+    sliderPagination.style.position = "absolute";
+    sliderPagination.style.top = "90%";
+    sliderPagination.style.left = "50%";
+    sliderPagination.style.transform = "translate(-50%,-50%)";
+
+    // Иконки для кнопок слайдера
+    const SVG_NS = "http://www.w3.org/2000/svg";
+    const XLINK_NS = "http://www.w3.org/1999/xlink";
+
+    // Создаём <svg>
+    const arrowIconRight = document.createElementNS(SVG_NS, "svg");
+    arrowIconRight.setAttribute("width", "24");
+    arrowIconRight.setAttribute("height", "24");
+
+    // Создаём <use>
+    const use = document.createElementNS(SVG_NS, "use");
+    use.setAttributeNS(XLINK_NS, "xlink:href", "/public/sprites.svg#icon-arrow-right");
+
+    // Вставляем <use> внутрь <svg>
+    arrowIconRight.appendChild(use);
+
+    const arrowIconLeft = arrowIconRight.cloneNode(true);
+    arrowIconLeft.style.transform = "rotate(180deg)";
+
+    // Добавляем иконку в нужную кнопку
+    sliderSwipeRight.appendChild(arrowIconRight);
+    sliderSwipeLeft.appendChild(arrowIconLeft);
+
+    // Ждём отрисовки элементов
+    const totalPages = Math.ceil(sliderSlides.length / perView);
+    let currentPage = 0;
+
+    setTimeout(() => {
+        // Пагинация
+        function renderPagination() {
+            sliderPagination.innerHTML = ""; // очищаем
+
+            for (let i = 0; i < totalPages; i++) {
+                const dot = document.createElement("span");
+                dot.style.display = "inline-block";
+                dot.style.width = "10px";
+                dot.style.height = "10px";
+                dot.style.margin = "0 5px";
+                dot.style.borderRadius = "50%";
+                dot.style.backgroundColor = i === currentPage ? "#E25E5E" : "#ccc";
+                dot.style.cursor = "pointer";
+
+                dot.addEventListener("click", () => {
+                    currentPage = i;
+                    sliderWrapperLeft = -((slideWidth + gap * 2) * perView * currentPage);
+                    sliderWrapper.style.left = `${sliderWrapperLeft}px`;
+                    renderPagination();
+                    console.log("test");
+                    
+                });
+
+                sliderPagination.appendChild(dot);
+            };
+        };
+
+        renderPagination();
+
+        const maxScroll = (sliderSlides.length - perView) * (slideWidth + gap * 2);
+
+        // Прокрутка с помощью колёсика мыши
+        sliderWrapper.addEventListener("wheel", (event) => {
+            event.preventDefault();
+
+            // Влево
+            if (event.deltaY > 0 && sliderWrapperLeft < 0) {
+                sliderWrapperLeft += slideWidth + gap * 2;
+                sliderWrapper.style.left = `${sliderWrapperLeft}px`
+            }
+
+            // Вправо
+            if (event.deltaY < 0 && Math.abs(sliderWrapperLeft) < maxScroll) {
+                sliderWrapperLeft -= slideWidth + gap * 2;
+                sliderWrapper.style.left = `${sliderWrapperLeft}px`
+            }
+        }, { passive: false });
+
+        // Прокрутка слайдера с помощью кнопок
+        sliderSwipeLeft.addEventListener("click", () => {
+            if (sliderWrapperLeft < 0) {
+                sliderWrapperLeft += slideWidth + gap * 2;
+                sliderWrapper.style.left = `${sliderWrapperLeft}px`
+            }
+        });
+
+        sliderSwipeRight.addEventListener("click", () => {
+            if (Math.abs(sliderWrapperLeft) < maxScroll) {
+                sliderWrapperLeft -= slideWidth + gap * 2;
+                sliderWrapper.style.left = `${sliderWrapperLeft}px`
+            }
+        })
+
+        // Задаём стили для слайдов
+        sliderSlides.forEach((slide) => {
+            slide.style.width = `${slideWidth}px`;
+            slide.style.objectFit = "cover";
+            slide.style.marginInline = `${gap}px`;
+        });
+
+        // Вычисляем максимальную ширину слайдера 
+        for (let i = 0; i < perView; i++) {
+            sliderMaxWidth += sliderSlides[i].offsetWidth;
+        };
+
+        slider.style.width = `${sliderMaxWidth + gap * 2 * perView}px`;
+
+        // Настраиваем стили для слайдера
+        slider.style.paddingInline = `${sliderSwipeWidth}px`;
+        slider.style.marginInline = "auto";
+        slider.style.height = "700px";
+        slider.style.position = "relative";
+        sliderWrapper.style.position = "absolute";
+        sliderWrapper.style.top = "0";
+        sliderWrapper.style.left = "0";
+        sliderWrapper.style.transition = "all .4s ease";
+        sliderWrapper.style.display = "flex";
+    }, 0)
+};
+
+initSlider("productsSlider", "productsSliderWrapper", "productsSliderSlide", 4);
