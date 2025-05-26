@@ -1,0 +1,69 @@
+@use "../base/mixins" as m;
+
+.recipes {
+    position: relative;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    background-color: var(--color-primary);
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: -50px;
+        left: 5%;
+        width: 70px;
+        height: 140px;
+        transform: rotate(30deg);
+        background: {
+            image: url("/public/images/product-image-4.png");
+            repeat: no-repeat;
+            size: cover;
+            position: center;
+        }
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 40px;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 25px;
+        text-align: center;
+        color: var(--color-light);
+        padding-inline: 80px;
+    }
+
+    &__body {
+        width: 100%;
+        column-gap: 30px;
+        row-gap: 50px;
+    }
+
+    &-card {
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+        color: var(--color-light);
+        transition: scale .4s ease;
+
+        @include m.hover {
+            scale: 1.05;
+        }
+
+        &__image {
+            border-radius: 10px;
+            box-shadow: -5px -5px 9px rgba(0, 0, 0, 0.25), 5px 5px 9px rgba(0, 0, 0, 0.3);
+        }
+
+        &__description {
+            padding-inline: 35px;
+            text-align: center;
+        }
+    }
+}

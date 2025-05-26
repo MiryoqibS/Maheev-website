@@ -9,6 +9,7 @@
     border-radius: 12px;
     position: relative;
     overflow: hidden;
+    max-width: fit-content;
 
     @include m.hover {
         background-color: var(--color-primary-text);
@@ -24,5 +25,12 @@
         a {
             transition-duration: 0.2s;
         }
+    }
+
+    &--primary {
+        background-color: var(--color-light);
+        color: var(--color-primary-text);
+        font-weight: 700;
+        box-shadow: none;
     }
 }
