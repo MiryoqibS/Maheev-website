@@ -170,6 +170,8 @@ const initSlider = (slider, sliderWrapper, sliderSlides, perView) => {
         function renderPagination() {
             sliderPagination.innerHTML = ""; // очищаем
 
+            sliderPagination.style.display = "flex";
+
             for (let i = 0; i < totalPages; i++) {
                 const dot = document.createElement("span");
                 dot.style.display = "inline-block";
